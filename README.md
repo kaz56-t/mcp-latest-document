@@ -37,21 +37,41 @@ uv pip install mcp-latest-document
 
 ```json
 {
+    "mcpServers": {
+        "latest_document": {
+            "command": "uv",
+            "args": [
+                "--directory",
+                "E:/src/agent/mcp-latest-document",
+                "run",
+                "src/mcp_latest_document/server.py"
+            ],
+            "env": {
+                "URLS":"https://api.openai.com/v1"
+            }
+        }
+    }
+}
+```
+
+4. Relaunch Claude Desktop.
+
+### For others
+```json
+{
   "mcpServers": {
     "documentation": {
       "command": "uvx",
       "args": [
         "mcp_latest_document"
       ],
-      "env": [
-        "URLS": "https://api.openai.com/v1"
-      ]
+      "env": {
+        "URLS":"https://api.openai.com/v1"
+      }
     }
   }
 }
 ```
-4. Relaunch Claude Desktop.
-
 
 ## Available Tools
 
@@ -77,6 +97,8 @@ uv run mcp dev ./src/mcp_latest_document/server.py
 ```
 
 ## For developer
+## How to test
+1. `uv run mcp dev src/mcp_latest_document/server.py`
 
 ### How to deploy (To be automated)
 1. `uv run -m build`
