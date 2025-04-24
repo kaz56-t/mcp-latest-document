@@ -10,5 +10,6 @@ class ToolURLS(Enum):
     python = "https://docs.python.org/3/"
     go = "https://go.dev/doc/"
 
-print(ToolURLS['python'].value)
-print('te' in ToolURLS.__members__)
+
+print(ToolURLS["python"].value)
+print("te" in ToolURLS.__members__)
