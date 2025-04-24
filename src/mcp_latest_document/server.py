@@ -141,7 +141,9 @@ def get_html_content(url: str) -> str:
 
 
 @mcp.tool()
-def find_link_by_keyword(keyword: str) -> list[str]:
+def find_link_by_keyword(
+    keyword: str,  # The keyword in English to search for in link text or URLs
+) -> list[str]:
     """Find URL links by keyword"""
     matched_links = {}
     for url in URLS:
@@ -152,9 +154,19 @@ def find_link_by_keyword(keyword: str) -> list[str]:
     return matched_links
 
 
-@mcp.resource("links://")
-def get_documents() -> str:
-    """Get the links of the documents"""
+@mcp.tool()
+def get_document_links() -> str:
+    """Get the page titles of the documents"""
+    all_links = {}
+    for url in URLS:
+        links = Scraper.findout_links(url)
+        all_links.update(links)
+    return all_links
+
+
+@mcp.resource("metadata://titles")
+def get_document_links_resoure() -> str:
+    """Get the page titles of the documents"""
     all_links = {}
     for url in URLS:
         links = Scraper.findout_links(url)
