@@ -3,7 +3,7 @@ import asyncio
 import httpx
 from unittest.mock import patch, MagicMock
 from bs4 import BeautifulSoup
-from src.mcp_latest_document.scraper import Scraper
+from src.mcp_latest_document.server import Scraper
 
 
 @pytest.fixture
