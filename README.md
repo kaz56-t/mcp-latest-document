@@ -47,6 +47,7 @@ uv pip install mcp-latest-document
                 "src/mcp_latest_document/server.py"
             ],
             "env": {
+                "TOOLS": "React, ChakraUI",
                 "URLS":"https://api.openai.com/v1"
             }
         }
@@ -66,6 +67,7 @@ uv pip install mcp-latest-document
         "mcp_latest_document"
       ],
       "env": {
+        "TOOLS": "React, ChakraUI",
         "URLS":"https://api.openai.com/v1"
       }
     }
