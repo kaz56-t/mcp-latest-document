@@ -26,19 +26,19 @@ jobs:
       
       - name: Install dependencies with uv
         run: |
-          uv pip install -r pyproject.toml --all-extras
+          uv sync
       
       - name: Run pytest
         run: |
-          pytest
+          uv run pytest
       
       - name: Run ruff format
         run: |
-          ruff format .
+          uv run ruff format .
       
       - name: Run ruff lint with fixes
         run: |
-          ruff check --fix .
+          uv run ruff check --fix .
       
       - name: Check for changes
         id: git-check
