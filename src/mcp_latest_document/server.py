@@ -142,7 +142,7 @@ def get_html_content(url: str) -> str:
 
 @mcp.tool()
 def find_link_by_keyword(
-    keyword: str  # The keyword in English to search for in link text or URLs
+    keyword: str,  # The keyword in English to search for in link text or URLs
 ) -> list[str]:
     """Find URL links by keyword"""
     matched_links = {}
