@@ -83,11 +83,11 @@ def test_get_base_url():
 
 def test_findout_links(sample_html):
     # Mock the get_html_sync method to return our sample HTML
-    with patch('src.mcp_latest_document.scraper.Scraper.get_html_sync') as mock_get_html:
+    with patch('src.mcp_latest_document.server.Scraper.get_html_sync') as mock_get_html:
         mock_get_html.return_value = sample_html
         
         # Mock BeautifulSoup to use our sample HTML
-        with patch('src.mcp_latest_document.scraper.BeautifulSoup') as mock_bs:
+        with patch('src.mcp_latest_document.server.BeautifulSoup') as mock_bs:
             soup = BeautifulSoup(sample_html, 'lxml')
             mock_bs.return_value = soup
             
@@ -103,7 +103,7 @@ def test_findout_links(sample_html):
 
 def test_findout_links_error_handling():
     # Test error handling when get_html_sync raises an exception
-    with patch('src.mcp_latest_document.scraper.Scraper.get_html_sync') as mock_get_html:
+    with patch('src.mcp_latest_document.server.Scraper.get_html_sync') as mock_get_html:
         mock_get_html.side_effect = httpx.HTTPError("Error fetching URL")
         
         with pytest.raises(httpx.HTTPError):
