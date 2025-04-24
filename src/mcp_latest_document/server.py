@@ -5,10 +5,26 @@ from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 import httpx
 from markdownify import markdownify
+from enum import Enum
 
 load_dotenv()
+class ToolURLS(Enum):
+    # FrontEnd
+    react = "https://react.dev/reference/react-dom"
+    reactnative = "https://reactnative.dev/docs/components-and-apis"
+    chakraui = "https://chakra-ui.com/docs/components/concepts/overview"
+    # Backend
+    python = "https://docs.python.org/3/"
+    go = "https://go.dev/doc/"
 
-URLS = os.environ.get("URLS", "https://react.dev/reference/react-dom").split(",")
+env_urls = os.environ.get("URLS", "").split(",")
+tools = os.environ.get("TOOLS", "React").split(",")
+tool_urls = []
+for tool in tools:
+    tool = tool.lower().replace("_", "").replace(".", "").strip()
+    if tool in ToolURLS.__members__:
+        tool_urls.append(ToolURLS[tool].value)
+URLS = tool_urls + env_urls
 
 class Scraper:
     @staticmethod
