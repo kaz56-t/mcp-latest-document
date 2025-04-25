@@ -61,7 +61,7 @@ uv pip install mcp-latest-document
 ```json
 {
   "mcpServers": {
-    "documentation": {
+    "latest_document": {
       "command": "uvx",
       "args": [
         "mcp_latest_document"
