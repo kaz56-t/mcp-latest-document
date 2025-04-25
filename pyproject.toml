@@ -1,6 +1,6 @@
 [project]
 name = "mcp-latest-document"
-version = "0.1.1"
+version = "0.1.2"
 description = "Get the latest documents"
 readme = "README.md"
 keywords = ["document", "mcp", "llm"]
