@@ -338,18 +338,20 @@ def find_link_by_keyword(
 
 
 @mcp.tool()
-def get_document_links() -> str:
-    """Get the page titles of the documents"""
-    all_links = {}
+def get_document_links() -> list[Page]:
+    """Get the page titles and urls of the documents"""
+    pages = []
     for url in URLS:
         links = Scraper.findout_links(url)
-        all_links.update(links)
-    return all_links
+        for title, url in links.items():
+            pages.append(Page(title=title, url=url))
+
+    return pages
 
 
-@mcp.resource("metadata://titles")
+@mcp.resource("metadata://pages")
 def get_document_links_resoure() -> list[Page]:
-    """Get the page titles of the documents"""
+    """Get the page titles and urls of the documents"""
     pages = []
     for url in URLS:
         links = Scraper.findout_links(url)
