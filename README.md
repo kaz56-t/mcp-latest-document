@@ -4,36 +4,15 @@ A Model Context Protocol server that provides access to the latest documentation
 
 ## Requirements
 1. Python 3.10 or higher
-
-## Installation
-
-### Step 1. Install uv
-- MacOS/Linux:
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-- Windows:
-```bash
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-### Step 2. Install the package
-You can install the package directly using pip:
-```bash
-pip install mcp-latest-document
-```
-
-Or use uv:
-```bash
-uv pip install mcp-latest-document
-```
+2. uv
 
 ## Configuration
 
 ### Configure for Claude Desktop
-1. Download [Claude Desktop](https://claude.ai/download).
-2. Launch Claude and go to Settings > Developer > Edit Config.
-3. Modify `claude_desktop_config.json` with:
+1. clone this repository
+2. Download [Claude Desktop](https://claude.ai/download).
+3. Launch Claude and go to Settings > Developer > Edit Config.
+4. Modify `claude_desktop_config.json` with:
 
 ```json
 {
@@ -42,7 +21,7 @@ uv pip install mcp-latest-document
             "command": "uv",
             "args": [
                 "--directory",
-                "E:/src/agent/mcp-latest-document",
+                "<YOUR_PATH_TO_MCP_LATEST_DOCUMENT>",
                 "run",
                 "src/mcp_latest_document/server.py"
             ],
@@ -57,23 +36,6 @@ uv pip install mcp-latest-document
 
 4. Relaunch Claude Desktop.
 
-### For others
-```json
-{
-  "mcpServers": {
-    "latest_document": {
-      "command": "uvx",
-      "args": [
-        "mcp_latest_document"
-      ],
-      "env": {
-        "TOOLS": "React, ChakraUI",
-        "URLS":"https://api.openai.com/v1"
-      }
-    }
-  }
-}
-```
 
 ## Available Tools
 
